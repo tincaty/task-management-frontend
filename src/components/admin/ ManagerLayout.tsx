@@ -147,43 +147,43 @@ export default function ManagerLayout() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-400">
+      <div className="flex items-center justify-center min-h-screen bg-white">
         <div className="text-center">
           <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-gray-400">Loading dashboard...</p>
+          <p className="text-gray-600">Loading dashboard...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen flex bg-gray-900">
+    <div className="min-h-screen flex bg-gray-50">
       {/* Sidebar */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 w-72 bg-gray-800 text-gray-200 transform transition-transform duration-300 lg:translate-x-0 lg:static shadow-2xl border-r border-gray-700 ${
+        className={`fixed inset-y-0 left-0 z-50 w-72 bg-white text-gray-700 transform transition-transform duration-300 lg:translate-x-0 lg:static shadow-xl border-r border-gray-200 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         {/* Logo Section */}
-        <div className="p-5 border-b border-gray-700">
+        <div className="p-5 border-b border-gray-200">
           <div className="flex items-center gap-3">
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center shadow-lg">
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center shadow-lg">
               <UserCog className="w-8 h-8 text-white" />
             </div>
             <div>
-              <h2 className="font-bold text-lg leading-tight text-white">
+              <h2 className="font-bold text-lg leading-tight text-gray-900">
                 Task Manager
               </h2>
-              <p className="text-sm text-gray-400">Manager Panel</p>
+              <p className="text-sm text-gray-500">Manager Panel</p>
             </div>
           </div>
         </div>
 
         {/* User Info Section */}
-        <div className="px-5 py-4 border-b border-gray-700 bg-gray-800/50">
+        <div className="px-5 py-4 border-b border-gray-200 bg-gray-50/50">
           <div className="flex items-center gap-3">
             <div className="relative">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center shadow-md">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-md">
                 {userData?.profile_image ? (
                   <img
                     src={userData.profile_image}
@@ -196,18 +196,18 @@ export default function ManagerLayout() {
                   </span>
                 )}
               </div>
-              <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 border-2 border-gray-800 rounded-full"></div>
+              <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></div>
             </div>
             <div className="flex-1 min-w-0">
-              <p className="font-medium text-sm text-white truncate">
+              <p className="font-medium text-sm text-gray-900 truncate">
                 {getFullName()}
               </p>
-              <p className="text-xs text-gray-400 truncate max-w-[140px]">
+              <p className="text-xs text-gray-500 truncate max-w-[140px]">
                 {getUserEmail()}
               </p>
               <div className="flex items-center gap-1 mt-1">
-                <Shield className="w-3 h-3 text-orange-400" />
-                <p className="text-xs text-orange-400 font-medium">
+                <Shield className="w-3 h-3 text-blue-600" />
+                <p className="text-xs text-blue-600 font-medium">
                   {getUserRole()}
                 </p>
               </div>
@@ -226,17 +226,17 @@ export default function ManagerLayout() {
                 onClick={() => setSidebarOpen(false)}
                 className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 group ${
                   active
-                    ? "bg-gradient-to-r from-orange-500 to-red-600 text-white shadow-lg shadow-orange-500/25"
-                    : "text-gray-400 hover:bg-gray-700/50 hover:text-white"
+                    ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg shadow-blue-500/25"
+                    : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
                 }`}
               >
                 <l.icon
-                  className={`w-5 h-5 ${active ? "text-white" : "text-gray-500 group-hover:text-gray-300"}`}
+                  className={`w-5 h-5 ${active ? "text-white" : "text-gray-500 group-hover:text-gray-700"}`}
                 />
                 <div className="flex-1 min-w-0">
                   <div className="truncate">{l.label}</div>
                   <div
-                    className={`text-xs truncate ${active ? "text-orange-200" : "text-gray-500"}`}
+                    className={`text-xs truncate ${active ? "text-blue-200" : "text-gray-400"}`}
                   >
                     {l.description}
                   </div>
@@ -250,18 +250,18 @@ export default function ManagerLayout() {
         </nav>
 
         {/* Bottom Status Section */}
-        <div className="p-4 border-t border-gray-700 mt-auto">
-          <div className="mb-3 p-3 rounded-xl bg-gradient-to-r from-orange-900/30 to-red-900/30 border border-orange-500/20">
+        <div className="p-4 border-t border-gray-200 mt-auto">
+          <div className="mb-3 p-3 rounded-xl bg-gradient-to-r from-blue-50 to-blue-100 border border-blue-200">
             <div className="flex items-center gap-2">
-              <Bell className="w-4 h-4 text-orange-400" />
-              <span className="text-xs text-gray-400">
+              <Bell className="w-4 h-4 text-blue-600" />
+              <span className="text-xs text-gray-600">
                 System Status: Online
               </span>
             </div>
           </div>
           <button
             onClick={handleLogout}
-            className="w-full flex items-center justify-center gap-3 px-4 py-3 rounded-xl bg-red-500/10 hover:bg-red-600 transition-all duration-300 text-sm font-medium text-red-400 hover:text-white border border-red-500/20 hover:border-red-600"
+            className="w-full flex items-center justify-center gap-3 px-4 py-3 rounded-xl bg-red-50 hover:bg-red-600 transition-all duration-300 text-sm font-medium text-red-600 hover:text-white border border-red-200 hover:border-red-600"
           >
             <LogOut className="w-5 h-5" />
             Logout
@@ -272,7 +272,7 @@ export default function ManagerLayout() {
       {/* Mobile Overlay */}
       {sidebarOpen && (
         <div
-          className="fixed inset-0 bg-black/70 z-40 lg:hidden backdrop-blur-sm"
+          className="fixed inset-0 bg-black/50 z-40 lg:hidden backdrop-blur-sm"
           onClick={() => setSidebarOpen(false)}
         />
       )}
@@ -280,10 +280,10 @@ export default function ManagerLayout() {
       {/* Main Content */}
       <div className="flex-1 flex flex-col min-h-screen">
         {/* Top Navbar */}
-        <header className="sticky top-0 z-30 bg-gray-800/80 backdrop-blur-sm shadow-lg px-4 md:px-6 py-4 flex items-center gap-4 border-b border-gray-700">
+        <header className="sticky top-0 z-30 bg-white/80 backdrop-blur-sm shadow-sm px-4 md:px-6 py-4 flex items-center gap-4 border-b border-gray-200">
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 rounded-xl hover:bg-gray-700 transition text-gray-400 hover:text-white"
+            className="lg:hidden p-2 rounded-xl hover:bg-gray-100 transition text-gray-600 hover:text-gray-900"
             onClick={() => setSidebarOpen(!sidebarOpen)}
           >
             {sidebarOpen ? (
@@ -295,8 +295,8 @@ export default function ManagerLayout() {
 
           {/* Page Title */}
           <div className="flex-1">
-            <h2 className="font-bold text-xl text-white">{currentPage}</h2>
-            <p className="text-sm text-gray-400">
+            <h2 className="font-bold text-xl text-gray-900">{currentPage}</h2>
+            <p className="text-sm text-gray-500">
               {links.find((l) => l.label === currentPage)?.description ||
                 "Manage your team and tasks"}
             </p>
@@ -305,15 +305,15 @@ export default function ManagerLayout() {
           {/* Right Actions */}
           <div className="flex items-center gap-3">
             {/* Role Badge */}
-            <div className="hidden md:flex items-center gap-2 px-3 py-2 rounded-xl bg-gray-700/50">
-              <div className="w-2 h-2 rounded-full bg-orange-500"></div>
-              <span className="text-sm font-medium text-gray-300">
+            <div className="hidden md:flex items-center gap-2 px-3 py-2 rounded-xl bg-gray-100">
+              <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+              <span className="text-sm font-medium text-gray-700">
                 {getUserRole()}
               </span>
             </div>
 
             {/* Notification Bell */}
-            <button className="p-2 rounded-xl hover:bg-gray-700 transition relative text-gray-400 hover:text-white">
+            <button className="p-2 rounded-xl hover:bg-gray-100 transition relative text-gray-600 hover:text-gray-900">
               <Bell className="w-5 h-5" />
               <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span>
             </button>
@@ -322,15 +322,15 @@ export default function ManagerLayout() {
             <div className="relative">
               <button
                 onClick={() => setShowUserMenu(!showUserMenu)}
-                className="flex items-center gap-2 p-1 rounded-xl hover:bg-gray-700 transition"
+                className="flex items-center gap-2 p-1 rounded-xl hover:bg-gray-100 transition"
               >
-                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center shadow-sm">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-sm">
                   <span className="text-white font-bold text-sm">
                     {getInitials()}
                   </span>
                 </div>
                 <ChevronDown
-                  className={`w-4 h-4 text-gray-400 transition-transform duration-200 ${showUserMenu ? "rotate-180" : ""}`}
+                  className={`w-4 h-4 text-gray-500 transition-transform duration-200 ${showUserMenu ? "rotate-180" : ""}`}
                 />
               </button>
 
@@ -341,26 +341,26 @@ export default function ManagerLayout() {
                     className="fixed inset-0 z-40"
                     onClick={() => setShowUserMenu(false)}
                   />
-                  <div className="absolute right-0 mt-2 w-64 bg-gray-800 rounded-xl shadow-2xl border border-gray-700 py-2 z-50">
+                  <div className="absolute right-0 mt-2 w-64 bg-white rounded-xl shadow-2xl border border-gray-200 py-2 z-50">
                     {/* User Info in Dropdown */}
-                    <div className="px-4 py-3 border-b border-gray-700">
+                    <div className="px-4 py-3 border-b border-gray-200">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
                           <span className="text-white font-bold text-sm">
                             {getInitials()}
                           </span>
                         </div>
                         <div>
-                          <p className="text-sm font-medium text-white">
+                          <p className="text-sm font-medium text-gray-900">
                             {getFullName()}
                           </p>
-                          <p className="text-xs text-gray-400 mt-0.5">
+                          <p className="text-xs text-gray-500 mt-0.5">
                             {getUserEmail()}
                           </p>
                         </div>
                       </div>
                       <div className="mt-2">
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-orange-500/20 text-orange-400 text-xs">
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 text-xs">
                           <Shield className="w-3 h-3" />
                           {getUserRole()}
                         </span>
@@ -369,7 +369,7 @@ export default function ManagerLayout() {
 
                     <Link
                       to="/user/manager/profile"
-                      className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-300 hover:bg-gray-700/50 transition"
+                      className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition"
                       onClick={() => setShowUserMenu(false)}
                     >
                       <User className="w-4 h-4" />
@@ -378,21 +378,21 @@ export default function ManagerLayout() {
 
                     <Link
                       to="/user/manager/settings"
-                      className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-300 hover:bg-gray-700/50 transition"
+                      className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition"
                       onClick={() => setShowUserMenu(false)}
                     >
                       <Settings className="w-4 h-4" />
                       System Settings
                     </Link>
 
-                    <div className="border-t border-gray-700 my-1"></div>
+                    <div className="border-t border-gray-200 my-1"></div>
 
                     <button
                       onClick={() => {
                         setShowUserMenu(false);
                         handleLogout();
                       }}
-                      className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-red-400 hover:bg-red-500/10 transition"
+                      className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition"
                     >
                       <LogOut className="w-4 h-4" />
                       Logout
@@ -406,7 +406,7 @@ export default function ManagerLayout() {
               <Button
                 variant="outline"
                 size="sm"
-                className="rounded-xl border-gray-600 bg-transparent text-gray-300 hover:bg-gray-700 hover:text-white hidden md:flex"
+                className="rounded-xl border-gray-300 bg-transparent text-gray-700 hover:bg-gray-100 hover:text-gray-900 hidden md:flex"
               >
                 <Home className="w-4 h-4 mr-2" />
                 Home

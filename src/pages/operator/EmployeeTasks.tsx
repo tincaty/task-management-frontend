@@ -207,19 +207,19 @@ export default function EmployeeTasks() {
           label: "To Do",
           color: "gray",
           icon: ListTodo,
-          bg: "bg-gray-500/10",
-          text: "text-gray-400",
-          border: "border-gray-500/30",
-          dot: "bg-gray-500",
+          bg: "bg-gray-100",
+          text: "text-gray-700",
+          border: "border-gray-300",
+          dot: "bg-gray-400",
         };
       case "IN_PROGRESS":
         return {
           label: "In Progress",
           color: "blue",
           icon: Activity,
-          bg: "bg-blue-500/10",
-          text: "text-blue-400",
-          border: "border-blue-500/30",
+          bg: "bg-blue-50",
+          text: "text-blue-700",
+          border: "border-blue-300",
           dot: "bg-blue-500 animate-pulse",
         };
       case "COMPLETED":
@@ -227,9 +227,9 @@ export default function EmployeeTasks() {
           label: "Completed",
           color: "green",
           icon: CheckCircle,
-          bg: "bg-green-500/10",
-          text: "text-green-400",
-          border: "border-green-500/30",
+          bg: "bg-green-50",
+          text: "text-green-700",
+          border: "border-green-300",
           dot: "bg-green-500",
         };
       default:
@@ -237,10 +237,10 @@ export default function EmployeeTasks() {
           label: "Unknown",
           color: "gray",
           icon: ListTodo,
-          bg: "bg-gray-500/10",
-          text: "text-gray-400",
-          border: "border-gray-500/30",
-          dot: "bg-gray-500",
+          bg: "bg-gray-100",
+          text: "text-gray-700",
+          border: "border-gray-300",
+          dot: "bg-gray-400",
         };
     }
   };
@@ -298,33 +298,33 @@ export default function EmployeeTasks() {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="text-center">
-          <Loader2 className="w-12 h-12 animate-spin text-blue-500 mx-auto mb-4" />
-          <p className="text-gray-400">Loading your tasks...</p>
+          <Loader2 className="w-12 h-12 animate-spin text-blue-600 mx-auto mb-4" />
+          <p className="text-gray-600">Loading your tasks...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-6">
+    <div className="min-h-screen bg-white p-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-700 p-6 mb-6">
+        <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 mb-6">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div className="flex items-center gap-3">
-              <div className="p-3 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500">
+              <div className="p-3 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600">
                 <FileText className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-white">My Tasks</h1>
-                <p className="text-sm text-gray-400">
+                <h1 className="text-2xl font-bold text-gray-900">My Tasks</h1>
+                <p className="text-sm text-gray-500">
                   View and manage tasks assigned to you
                 </p>
               </div>
             </div>
             <button
               onClick={() => fetchMyTasks(pagination.currentPage)}
-              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-700/50 hover:bg-gray-700 text-gray-300 transition-all duration-200"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-600 transition-all duration-200"
             >
               <RefreshCw
                 className={`w-5 h-5 ${loading ? "animate-spin" : ""}`}
@@ -336,40 +336,40 @@ export default function EmployeeTasks() {
 
         {/* Statistics Cards */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-6">
-          <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl border border-gray-700 p-4">
-            <p className="text-xs text-gray-400">Total</p>
-            <p className="text-2xl font-bold text-white">
+          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 hover:border-blue-300 hover:shadow-md transition-all duration-200">
+            <p className="text-xs text-gray-500">Total</p>
+            <p className="text-2xl font-bold text-gray-900">
               {taskStats.totalTasks}
             </p>
           </div>
-          <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl border border-gray-700 p-4">
-            <p className="text-xs text-gray-400">To Do</p>
-            <p className="text-2xl font-bold text-gray-400">
+          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 hover:border-blue-300 hover:shadow-md transition-all duration-200">
+            <p className="text-xs text-gray-500">To Do</p>
+            <p className="text-2xl font-bold text-gray-700">
               {taskStats.todoTasks}
             </p>
           </div>
-          <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl border border-gray-700 p-4">
-            <p className="text-xs text-gray-400">In Progress</p>
-            <p className="text-2xl font-bold text-blue-400">
+          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 hover:border-blue-300 hover:shadow-md transition-all duration-200">
+            <p className="text-xs text-gray-500">In Progress</p>
+            <p className="text-2xl font-bold text-blue-600">
               {taskStats.inProgressTasks}
             </p>
           </div>
-          <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl border border-gray-700 p-4">
-            <p className="text-xs text-gray-400">Completed</p>
-            <p className="text-2xl font-bold text-green-400">
+          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 hover:border-blue-300 hover:shadow-md transition-all duration-200">
+            <p className="text-xs text-gray-500">Completed</p>
+            <p className="text-2xl font-bold text-green-600">
               {taskStats.completedTasks}
             </p>
           </div>
-          <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl border border-gray-700 p-4">
-            <p className="text-xs text-gray-400">Overdue</p>
-            <p className="text-2xl font-bold text-red-400">
+          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 hover:border-blue-300 hover:shadow-md transition-all duration-200">
+            <p className="text-xs text-gray-500">Overdue</p>
+            <p className="text-2xl font-bold text-red-600">
               {taskStats.overdueTasks}
             </p>
           </div>
         </div>
 
         {/* Filters and Search */}
-        <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-700 p-4 mb-6">
+        <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-4 mb-6">
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="flex-1 relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -378,7 +378,7 @@ export default function EmployeeTasks() {
                 placeholder="Search tasks by name or description..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 rounded-lg bg-gray-900/50 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors"
+                className="w-full pl-10 pr-4 py-2 rounded-lg bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
               />
             </div>
             <div className="flex items-center gap-2">
@@ -386,7 +386,7 @@ export default function EmployeeTasks() {
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="px-4 py-2 rounded-lg bg-gray-900/50 border border-gray-700 text-white focus:outline-none focus:border-blue-500 transition-colors"
+                className="px-4 py-2 rounded-lg bg-gray-50 border border-gray-200 text-gray-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
               >
                 <option value="ALL">All Status</option>
                 <option value="TODO">To Do</option>
@@ -398,13 +398,13 @@ export default function EmployeeTasks() {
         </div>
 
         {/* Tasks Table */}
-        <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-700 overflow-hidden">
+        <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-gray-900/50 border-b border-gray-700">
+              <thead className="bg-gray-50 border-b border-gray-200">
                 <tr>
                   <th
-                    className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider cursor-pointer hover:text-gray-200 transition-colors"
+                    className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:text-gray-700 transition-colors"
                     onClick={() => handleSort("name")}
                   >
                     <div className="flex items-center gap-2">
@@ -417,11 +417,11 @@ export default function EmployeeTasks() {
                         ))}
                     </div>
                   </th>
-                  <th className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Description
                   </th>
                   <th
-                    className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider cursor-pointer hover:text-gray-200 transition-colors"
+                    className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:text-gray-700 transition-colors"
                     onClick={() => handleSort("status")}
                   >
                     <div className="flex items-center gap-2">
@@ -435,7 +435,7 @@ export default function EmployeeTasks() {
                     </div>
                   </th>
                   <th
-                    className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider cursor-pointer hover:text-gray-200 transition-colors"
+                    className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:text-gray-700 transition-colors"
                     onClick={() => handleSort("createdAt")}
                   >
                     <div className="flex items-center gap-2">
@@ -448,21 +448,21 @@ export default function EmployeeTasks() {
                         ))}
                     </div>
                   </th>
-                  <th className="px-6 py-4 text-right text-xs font-medium text-gray-400 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Actions
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-700">
+              <tbody className="divide-y divide-gray-200">
                 {paginatedTasks.length === 0 ? (
                   <tr>
                     <td colSpan={5} className="px-6 py-12 text-center">
                       <div className="flex flex-col items-center gap-2">
-                        <FileText className="w-12 h-12 text-gray-600" />
-                        <p className="text-gray-400">
+                        <FileText className="w-12 h-12 text-gray-300" />
+                        <p className="text-gray-500">
                           No tasks assigned to you
                         </p>
-                        <p className="text-xs text-gray-500">
+                        <p className="text-xs text-gray-400">
                           Your manager will assign tasks to you soon
                         </p>
                       </div>
@@ -475,28 +475,28 @@ export default function EmployeeTasks() {
                     return (
                       <tr
                         key={task._id}
-                        className="hover:bg-gray-700/30 transition-colors duration-150"
+                        className="hover:bg-gray-50 transition-colors duration-150"
                       >
                         <td className="px-6 py-4">
                           <div className="flex items-center gap-2">
                             <div
                               className={`w-2 h-2 rounded-full ${statusInfo.dot}`}
                             ></div>
-                            <span className="text-sm font-medium text-white">
+                            <span className="text-sm font-medium text-gray-900">
                               {task.name}
                             </span>
                           </div>
                           {task.comment && (
                             <div className="flex items-center gap-1 mt-1">
-                              <MessageSquare className="w-3 h-3 text-gray-500" />
-                              <span className="text-xs text-gray-400 line-clamp-1">
+                              <MessageSquare className="w-3 h-3 text-gray-400" />
+                              <span className="text-xs text-gray-500 line-clamp-1">
                                 {task.comment}
                               </span>
                             </div>
                           )}
                         </td>
                         <td className="px-6 py-4">
-                          <p className="text-sm text-gray-300 line-clamp-2 max-w-xs">
+                          <p className="text-sm text-gray-600 line-clamp-2 max-w-xs">
                             {task.description}
                           </p>
                         </td>
@@ -510,10 +510,10 @@ export default function EmployeeTasks() {
                         </td>
                         <td className="px-6 py-4">
                           <div className="flex flex-col">
-                            <span className="text-sm text-gray-400">
+                            <span className="text-sm text-gray-600">
                               {formatDate(task.createdAt)}
                             </span>
-                            <span className="text-xs text-gray-500">
+                            <span className="text-xs text-gray-400">
                               {new Date(task.createdAt).toLocaleTimeString(
                                 "en-TZ",
                                 {
@@ -528,7 +528,7 @@ export default function EmployeeTasks() {
                           <div className="flex items-center justify-end">
                             <button
                               onClick={() => handleViewTask(task)}
-                              className="p-2 rounded-lg bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 transition-all duration-200"
+                              className="p-2 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-600 transition-all duration-200"
                               title="View Task Details"
                             >
                               <Eye className="w-4 h-4" />
@@ -545,8 +545,8 @@ export default function EmployeeTasks() {
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="px-6 py-4 border-t border-gray-700 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="text-sm text-gray-400">
+            <div className="px-6 py-4 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="text-sm text-gray-500">
                 Showing {(pagination.currentPage - 1) * pagination.limit + 1} to{" "}
                 {Math.min(
                   pagination.currentPage * pagination.limit,
@@ -558,17 +558,17 @@ export default function EmployeeTasks() {
                 <button
                   onClick={() => fetchMyTasks(pagination.currentPage - 1)}
                   disabled={pagination.currentPage === 1}
-                  className="p-2 rounded-lg bg-gray-700/50 hover:bg-gray-700 text-gray-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+                  className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
                 >
                   <ChevronLeft className="w-4 h-4" />
                 </button>
-                <span className="text-sm text-gray-400 px-3">
+                <span className="text-sm text-gray-600 px-3">
                   Page {pagination.currentPage} of {totalPages}
                 </span>
                 <button
                   onClick={() => fetchMyTasks(pagination.currentPage + 1)}
                   disabled={pagination.currentPage === totalPages}
-                  className="p-2 rounded-lg bg-gray-700/50 hover:bg-gray-700 text-gray-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+                  className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
                 >
                   <ChevronRight className="w-4 h-4" />
                 </button>
@@ -580,21 +580,23 @@ export default function EmployeeTasks() {
 
       {/* View Task Modal */}
       {isViewModalOpen && selectedTask && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm">
-          <div className="bg-gray-800 rounded-2xl border border-gray-700 p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+          <div className="bg-white rounded-2xl border border-gray-200 shadow-xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
-                <div className="p-2 rounded-lg bg-blue-500/20">
-                  <Eye className="w-5 h-5 text-blue-400" />
+                <div className="p-2 rounded-lg bg-blue-600">
+                  <Eye className="w-5 h-5 text-white" />
                 </div>
-                <h2 className="text-xl font-bold text-white">Task Details</h2>
+                <h2 className="text-xl font-bold text-gray-900">
+                  Task Details
+                </h2>
               </div>
               <button
                 onClick={() => {
                   setIsViewModalOpen(false);
                   setSelectedTask(null);
                 }}
-                className="p-1.5 rounded-lg hover:bg-gray-700 text-gray-400 transition-colors"
+                className="p-1.5 rounded-lg hover:bg-gray-100 text-gray-400 transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -602,14 +604,16 @@ export default function EmployeeTasks() {
 
             <div className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="p-4 rounded-xl bg-gray-900/50 border border-gray-700">
-                  <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">
+                <div className="p-4 rounded-xl bg-gray-50 border border-gray-200">
+                  <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">
                     Task Name
                   </p>
-                  <p className="text-white font-medium">{selectedTask.name}</p>
+                  <p className="text-gray-900 font-medium">
+                    {selectedTask.name}
+                  </p>
                 </div>
-                <div className="p-4 rounded-xl bg-gray-900/50 border border-gray-700">
-                  <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">
+                <div className="p-4 rounded-xl bg-gray-50 border border-gray-200">
+                  <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">
                     Status
                   </p>
                   {(() => {
@@ -627,33 +631,33 @@ export default function EmployeeTasks() {
                 </div>
               </div>
 
-              <div className="p-4 rounded-xl bg-gray-900/50 border border-gray-700">
-                <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">
+              <div className="p-4 rounded-xl bg-gray-50 border border-gray-200">
+                <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">
                   Description
                 </p>
-                <p className="text-white">{selectedTask.description}</p>
+                <p className="text-gray-900">{selectedTask.description}</p>
               </div>
 
               {selectedTask.comment && (
-                <div className="p-4 rounded-xl bg-gray-900/50 border border-gray-700">
-                  <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">
+                <div className="p-4 rounded-xl bg-gray-50 border border-gray-200">
+                  <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">
                     Comment
                   </p>
                   <div className="flex items-start gap-2">
                     <MessageSquare className="w-4 h-4 text-gray-400 mt-1" />
-                    <p className="text-white">{selectedTask.comment}</p>
+                    <p className="text-gray-900">{selectedTask.comment}</p>
                   </div>
                 </div>
               )}
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="p-4 rounded-xl bg-gray-900/50 border border-gray-700">
-                  <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">
+                <div className="p-4 rounded-xl bg-gray-50 border border-gray-200">
+                  <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">
                     Created At
                   </p>
                   <div className="flex items-center gap-2">
                     <Calendar className="w-4 h-4 text-gray-400" />
-                    <span className="text-white">
+                    <span className="text-gray-900">
                       {new Date(selectedTask.createdAt).toLocaleDateString(
                         "en-TZ",
                         {
@@ -664,7 +668,7 @@ export default function EmployeeTasks() {
                       )}
                     </span>
                   </div>
-                  <p className="text-sm text-gray-400 mt-1">
+                  <p className="text-sm text-gray-500 mt-1">
                     {new Date(selectedTask.createdAt).toLocaleTimeString(
                       "en-TZ",
                       {
@@ -674,13 +678,13 @@ export default function EmployeeTasks() {
                     )}
                   </p>
                 </div>
-                <div className="p-4 rounded-xl bg-gray-900/50 border border-gray-700">
-                  <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">
+                <div className="p-4 rounded-xl bg-gray-50 border border-gray-200">
+                  <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">
                     Last Updated
                   </p>
                   <div className="flex items-center gap-2">
                     <Clock className="w-4 h-4 text-gray-400" />
-                    <span className="text-white">
+                    <span className="text-gray-900">
                       {new Date(selectedTask.updatedAt).toLocaleDateString(
                         "en-TZ",
                         {
@@ -691,7 +695,7 @@ export default function EmployeeTasks() {
                       )}
                     </span>
                   </div>
-                  <p className="text-sm text-gray-400 mt-1">
+                  <p className="text-sm text-gray-500 mt-1">
                     {new Date(selectedTask.updatedAt).toLocaleTimeString(
                       "en-TZ",
                       {
@@ -704,13 +708,13 @@ export default function EmployeeTasks() {
               </div>
             </div>
 
-            <div className="flex items-center justify-end gap-3 mt-6 pt-4 border-t border-gray-700">
+            <div className="flex items-center justify-end gap-3 mt-6 pt-4 border-t border-gray-200">
               <button
                 onClick={() => {
                   setIsViewModalOpen(false);
                   setSelectedTask(null);
                 }}
-                className="px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 text-white transition-colors"
+                className="px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 transition-colors"
               >
                 Close
               </button>

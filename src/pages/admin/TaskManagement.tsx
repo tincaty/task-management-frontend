@@ -332,33 +332,33 @@ export default function TaskManagement() {
         return {
           color: "gray",
           icon: ListTodo,
-          bg: "bg-gray-500/10",
-          text: "text-gray-400",
-          border: "border-gray-500/30",
+          bg: "bg-gray-100",
+          text: "text-gray-700",
+          border: "border-gray-300",
         };
       case "IN_PROGRESS":
         return {
           color: "blue",
           icon: Activity,
-          bg: "bg-blue-500/10",
-          text: "text-blue-400",
-          border: "border-blue-500/30",
+          bg: "bg-blue-50",
+          text: "text-blue-700",
+          border: "border-blue-300",
         };
       case "COMPLETED":
         return {
           color: "green",
           icon: CheckCircle,
-          bg: "bg-green-500/10",
-          text: "text-green-400",
-          border: "border-green-500/30",
+          bg: "bg-green-50",
+          text: "text-green-700",
+          border: "border-green-300",
         };
       default:
         return {
           color: "gray",
           icon: ListTodo,
-          bg: "bg-gray-500/10",
-          text: "text-gray-400",
-          border: "border-gray-500/30",
+          bg: "bg-gray-100",
+          text: "text-gray-700",
+          border: "border-gray-300",
         };
     }
   };
@@ -392,20 +392,20 @@ export default function TaskManagement() {
     : [];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-6">
+    <div className="min-h-screen bg-white p-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-700 p-6 mb-6">
+        <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 mb-6">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div className="flex items-center gap-3">
-              <div className="p-3 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500">
+              <div className="p-3 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600">
                 <CheckSquare className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-white">
+                <h1 className="text-2xl font-bold text-gray-900">
                   Task Management
                 </h1>
-                <p className="text-sm text-gray-400">
+                <p className="text-sm text-gray-500">
                   Manage and track all tasks efficiently
                 </p>
               </div>
@@ -413,7 +413,7 @@ export default function TaskManagement() {
             <div className="flex items-center gap-3">
               <button
                 onClick={() => fetchTasks(pagination.currentPage)}
-                className="p-2 rounded-lg bg-gray-700/50 hover:bg-gray-700 text-gray-300 transition-all duration-200"
+                className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-600 transition-all duration-200"
               >
                 <RefreshCw
                   className={`w-5 h-5 ${loading ? "animate-spin" : ""}`}
@@ -422,7 +422,7 @@ export default function TaskManagement() {
               {userRole === "ADMIN" && (
                 <button
                   onClick={() => setIsCreateModalOpen(true)}
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-200"
+                  className="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-200"
                 >
                   <Plus className="w-5 h-5" />
                   <span>Create Task</span>
@@ -433,7 +433,7 @@ export default function TaskManagement() {
         </div>
 
         {/* Filters and Search */}
-        <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-700 p-4 mb-6">
+        <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-4 mb-6">
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="flex-1 relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -442,7 +442,7 @@ export default function TaskManagement() {
                 placeholder="Search tasks..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 rounded-lg bg-gray-900/50 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 transition-colors"
+                className="w-full pl-10 pr-4 py-2 rounded-lg bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
               />
             </div>
             <div className="flex items-center gap-2">
@@ -450,7 +450,7 @@ export default function TaskManagement() {
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="px-4 py-2 rounded-lg bg-gray-900/50 border border-gray-700 text-white focus:outline-none focus:border-blue-500 transition-colors"
+                className="px-4 py-2 rounded-lg bg-gray-50 border border-gray-200 text-gray-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
               >
                 <option value="ALL">All Status</option>
                 <option value="TODO">TODO</option>
@@ -462,38 +462,38 @@ export default function TaskManagement() {
         </div>
 
         {/* Task Table */}
-        <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-700 overflow-hidden">
+        <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-gray-900/50 border-b border-gray-700">
+              <thead className="bg-gray-50 border-b border-gray-200">
                 <tr>
-                  <th className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Task Name
                   </th>
-                  <th className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Description
                   </th>
-                  <th className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Assigned To
                   </th>
-                  <th className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Status
                   </th>
-                  <th className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Created
                   </th>
-                  <th className="px-6 py-4 text-right text-xs font-medium text-gray-400 uppercase tracking-wider">
+                  <th className="px-6 py-4 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Actions
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-700">
+              <tbody className="divide-y divide-gray-200">
                 {loading ? (
                   <tr>
                     <td colSpan={6} className="px-6 py-12 text-center">
                       <div className="flex items-center justify-center gap-3">
-                        <Activity className="w-6 h-6 animate-spin text-blue-400" />
-                        <span className="text-gray-400">Loading tasks...</span>
+                        <Activity className="w-6 h-6 animate-spin text-blue-600" />
+                        <span className="text-gray-600">Loading tasks...</span>
                       </div>
                     </td>
                   </tr>
@@ -501,12 +501,12 @@ export default function TaskManagement() {
                   <tr>
                     <td colSpan={6} className="px-6 py-12 text-center">
                       <div className="flex flex-col items-center gap-2">
-                        <FileText className="w-12 h-12 text-gray-600" />
-                        <p className="text-gray-400">No tasks found</p>
+                        <FileText className="w-12 h-12 text-gray-300" />
+                        <p className="text-gray-500">No tasks found</p>
                         {userRole === "ADMIN" && (
                           <button
                             onClick={() => setIsCreateModalOpen(true)}
-                            className="mt-2 text-blue-400 hover:text-blue-300"
+                            className="mt-2 text-blue-600 hover:text-blue-700 font-medium"
                           >
                             Create your first task
                           </button>
@@ -521,29 +521,29 @@ export default function TaskManagement() {
                     return (
                       <tr
                         key={task._id}
-                        className="hover:bg-gray-700/30 transition-colors duration-150"
+                        className="hover:bg-gray-50 transition-colors duration-150"
                       >
                         <td className="px-6 py-4">
                           <div className="flex items-center gap-2">
                             <div className="w-2 h-2 rounded-full bg-blue-500"></div>
-                            <span className="text-sm font-medium text-white">
+                            <span className="text-sm font-medium text-gray-900">
                               {task.name}
                             </span>
                           </div>
                         </td>
                         <td className="px-6 py-4">
-                          <p className="text-sm text-gray-300 line-clamp-2 max-w-xs">
+                          <p className="text-sm text-gray-600 line-clamp-2 max-w-xs">
                             {task.description}
                           </p>
                         </td>
                         <td className="px-6 py-4">
                           <div className="flex items-center gap-2">
-                            <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
+                            <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
                               <span className="text-xs text-white font-medium">
                                 {getUserName(task.assign_to).charAt(0)}
                               </span>
                             </div>
-                            <span className="text-sm text-gray-300">
+                            <span className="text-sm text-gray-700">
                               {getUserName(task.assign_to)}
                             </span>
                           </div>
@@ -557,7 +557,7 @@ export default function TaskManagement() {
                           </span>
                         </td>
                         <td className="px-6 py-4">
-                          <span className="text-sm text-gray-400">
+                          <span className="text-sm text-gray-500">
                             {format(new Date(task.createdAt), "MMM d, yyyy")}
                           </span>
                         </td>
@@ -565,7 +565,7 @@ export default function TaskManagement() {
                           <div className="flex items-center justify-end gap-2">
                             <button
                               onClick={() => handleView(task)}
-                              className="p-1.5 rounded-lg bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 transition-all duration-200"
+                              className="p-1.5 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-600 transition-all duration-200"
                               title="View Task"
                             >
                               <Eye className="w-4 h-4" />
@@ -573,7 +573,7 @@ export default function TaskManagement() {
                             {canEditTask() && (
                               <button
                                 onClick={() => handleEdit(task)}
-                                className="p-1.5 rounded-lg bg-yellow-500/10 hover:bg-yellow-500/20 text-yellow-400 transition-all duration-200"
+                                className="p-1.5 rounded-lg bg-yellow-50 hover:bg-yellow-100 text-yellow-600 transition-all duration-200"
                                 title="Edit Task"
                               >
                                 <Edit className="w-4 h-4" />
@@ -582,7 +582,7 @@ export default function TaskManagement() {
                             {canDeleteTask() && (
                               <button
                                 onClick={() => handleDelete(task)}
-                                className="p-1.5 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 transition-all duration-200"
+                                className="p-1.5 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 transition-all duration-200"
                                 title="Delete Task"
                               >
                                 <Trash2 className="w-4 h-4" />
@@ -600,8 +600,8 @@ export default function TaskManagement() {
 
           {/* Pagination */}
           {pagination.totalPages > 0 && (
-            <div className="px-6 py-4 border-t border-gray-700 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="text-sm text-gray-400">
+            <div className="px-6 py-4 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="text-sm text-gray-500">
                 Showing {(pagination.currentPage - 1) * pagination.limit + 1} to{" "}
                 {Math.min(
                   pagination.currentPage * pagination.limit,
@@ -615,11 +615,11 @@ export default function TaskManagement() {
                     fetchTasks(pagination.currentPage - 1, pagination.limit)
                   }
                   disabled={!pagination.hasPreviousPage}
-                  className="p-2 rounded-lg bg-gray-700/50 hover:bg-gray-700 text-gray-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+                  className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
                 >
                   <ChevronLeft className="w-4 h-4" />
                 </button>
-                <span className="text-sm text-gray-400 px-3">
+                <span className="text-sm text-gray-600 px-3">
                   Page {pagination.currentPage} of {pagination.totalPages}
                 </span>
                 <button
@@ -627,7 +627,7 @@ export default function TaskManagement() {
                     fetchTasks(pagination.currentPage + 1, pagination.limit)
                   }
                   disabled={!pagination.hasNextPage}
-                  className="p-2 rounded-lg bg-gray-700/50 hover:bg-gray-700 text-gray-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+                  className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
                 >
                   <ChevronRight className="w-4 h-4" />
                 </button>
@@ -639,14 +639,14 @@ export default function TaskManagement() {
 
       {/* Create Task Modal */}
       {isCreateModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm">
-          <div className="bg-gray-800 rounded-2xl border border-gray-700 p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+          <div className="bg-white rounded-2xl border border-gray-200 shadow-xl p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
-                <div className="p-2 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500">
+                <div className="p-2 rounded-lg bg-blue-600">
                   <Plus className="w-5 h-5 text-white" />
                 </div>
-                <h2 className="text-xl font-bold text-white">
+                <h2 className="text-xl font-bold text-gray-900">
                   Create New Task
                 </h2>
               </div>
@@ -655,7 +655,7 @@ export default function TaskManagement() {
                   setIsCreateModalOpen(false);
                   resetForm();
                 }}
-                className="p-1.5 rounded-lg hover:bg-gray-700 text-gray-400 transition-colors"
+                className="p-1.5 rounded-lg hover:bg-gray-100 text-gray-400 transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -663,7 +663,7 @@ export default function TaskManagement() {
 
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-1">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
                   Task Name *
                 </label>
                 <input
@@ -672,13 +672,13 @@ export default function TaskManagement() {
                   onChange={(e) =>
                     setFormData({ ...formData, name: e.target.value })
                   }
-                  className="w-full px-4 py-2 rounded-lg bg-gray-900/50 border border-gray-700 text-white focus:outline-none focus:border-blue-500 transition-colors"
+                  className="w-full px-4 py-2 rounded-lg bg-gray-50 border border-gray-200 text-gray-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
                   placeholder="Enter task name"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-1">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
                   Description *
                 </label>
                 <textarea
@@ -686,14 +686,14 @@ export default function TaskManagement() {
                   onChange={(e) =>
                     setFormData({ ...formData, description: e.target.value })
                   }
-                  className="w-full px-4 py-2 rounded-lg bg-gray-900/50 border border-gray-700 text-white focus:outline-none focus:border-blue-500 transition-colors resize-none"
+                  className="w-full px-4 py-2 rounded-lg bg-gray-50 border border-gray-200 text-gray-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all resize-none"
                   rows={3}
                   placeholder="Enter task description"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-1">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
                   Assign To *
                 </label>
                 <select
@@ -701,7 +701,7 @@ export default function TaskManagement() {
                   onChange={(e) =>
                     setFormData({ ...formData, assign_to: e.target.value })
                   }
-                  className="w-full px-4 py-2 rounded-lg bg-gray-900/50 border border-gray-700 text-white focus:outline-none focus:border-blue-500 transition-colors"
+                  className="w-full px-4 py-2 rounded-lg bg-gray-50 border border-gray-200 text-gray-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
                 >
                   <option value="">Select a user</option>
                   {Array.isArray(users) &&
@@ -714,7 +714,7 @@ export default function TaskManagement() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-1">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
                   Comment
                 </label>
                 <textarea
@@ -722,26 +722,26 @@ export default function TaskManagement() {
                   onChange={(e) =>
                     setFormData({ ...formData, comment: e.target.value })
                   }
-                  className="w-full px-4 py-2 rounded-lg bg-gray-900/50 border border-gray-700 text-white focus:outline-none focus:border-blue-500 transition-colors resize-none"
+                  className="w-full px-4 py-2 rounded-lg bg-gray-50 border border-gray-200 text-gray-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all resize-none"
                   rows={2}
                   placeholder="Add a comment (optional)"
                 />
               </div>
             </div>
 
-            <div className="flex items-center justify-end gap-3 mt-6 pt-4 border-t border-gray-700">
+            <div className="flex items-center justify-end gap-3 mt-6 pt-4 border-t border-gray-200">
               <button
                 onClick={() => {
                   setIsCreateModalOpen(false);
                   resetForm();
                 }}
-                className="px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 text-white transition-colors"
+                className="px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 transition-colors"
               >
                 Cancel
               </button>
               <button
                 onClick={createTask}
-                className="px-4 py-2 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-200 flex items-center gap-2"
+                className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-200 flex items-center gap-2"
               >
                 <Save className="w-4 h-4" />
                 Create Task
@@ -753,21 +753,21 @@ export default function TaskManagement() {
 
       {/* Edit Task Modal */}
       {isEditModalOpen && selectedTask && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm">
-          <div className="bg-gray-800 rounded-2xl border border-gray-700 p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+          <div className="bg-white rounded-2xl border border-gray-200 shadow-xl p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
-                <div className="p-2 rounded-lg bg-yellow-500/20">
-                  <Edit className="w-5 h-5 text-yellow-400" />
+                <div className="p-2 rounded-lg bg-yellow-500">
+                  <Edit className="w-5 h-5 text-white" />
                 </div>
-                <h2 className="text-xl font-bold text-white">Edit Task</h2>
+                <h2 className="text-xl font-bold text-gray-900">Edit Task</h2>
               </div>
               <button
                 onClick={() => {
                   setIsEditModalOpen(false);
                   resetForm();
                 }}
-                className="p-1.5 rounded-lg hover:bg-gray-700 text-gray-400 transition-colors"
+                className="p-1.5 rounded-lg hover:bg-gray-100 text-gray-400 transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -775,7 +775,7 @@ export default function TaskManagement() {
 
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-1">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
                   Task Name *
                 </label>
                 <input
@@ -784,13 +784,13 @@ export default function TaskManagement() {
                   onChange={(e) =>
                     setFormData({ ...formData, name: e.target.value })
                   }
-                  className="w-full px-4 py-2 rounded-lg bg-gray-900/50 border border-gray-700 text-white focus:outline-none focus:border-blue-500 transition-colors"
+                  className="w-full px-4 py-2 rounded-lg bg-gray-50 border border-gray-200 text-gray-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
                   placeholder="Enter task name"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-1">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
                   Description *
                 </label>
                 <textarea
@@ -798,14 +798,14 @@ export default function TaskManagement() {
                   onChange={(e) =>
                     setFormData({ ...formData, description: e.target.value })
                   }
-                  className="w-full px-4 py-2 rounded-lg bg-gray-900/50 border border-gray-700 text-white focus:outline-none focus:border-blue-500 transition-colors resize-none"
+                  className="w-full px-4 py-2 rounded-lg bg-gray-50 border border-gray-200 text-gray-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all resize-none"
                   rows={3}
                   placeholder="Enter task description"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-1">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
                   Status
                 </label>
                 <select
@@ -819,7 +819,7 @@ export default function TaskManagement() {
                         | "COMPLETED",
                     })
                   }
-                  className="w-full px-4 py-2 rounded-lg bg-gray-900/50 border border-gray-700 text-white focus:outline-none focus:border-blue-500 transition-colors"
+                  className="w-full px-4 py-2 rounded-lg bg-gray-50 border border-gray-200 text-gray-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
                 >
                   <option value="TODO">TODO</option>
                   <option value="IN_PROGRESS">IN PROGRESS</option>
@@ -828,7 +828,7 @@ export default function TaskManagement() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-1">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
                   Comment
                 </label>
                 <textarea
@@ -836,26 +836,26 @@ export default function TaskManagement() {
                   onChange={(e) =>
                     setFormData({ ...formData, comment: e.target.value })
                   }
-                  className="w-full px-4 py-2 rounded-lg bg-gray-900/50 border border-gray-700 text-white focus:outline-none focus:border-blue-500 transition-colors resize-none"
+                  className="w-full px-4 py-2 rounded-lg bg-gray-50 border border-gray-200 text-gray-900 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all resize-none"
                   rows={2}
                   placeholder="Add a comment (optional)"
                 />
               </div>
             </div>
 
-            <div className="flex items-center justify-end gap-3 mt-6 pt-4 border-t border-gray-700">
+            <div className="flex items-center justify-end gap-3 mt-6 pt-4 border-t border-gray-200">
               <button
                 onClick={() => {
                   setIsEditModalOpen(false);
                   resetForm();
                 }}
-                className="px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 text-white transition-colors"
+                className="px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 transition-colors"
               >
                 Cancel
               </button>
               <button
                 onClick={updateTask}
-                className="px-4 py-2 rounded-lg bg-gradient-to-r from-yellow-500 to-orange-500 text-white hover:shadow-lg hover:shadow-yellow-500/25 transition-all duration-200 flex items-center gap-2"
+                className="px-4 py-2 rounded-lg bg-yellow-600 hover:bg-yellow-700 text-white hover:shadow-lg hover:shadow-yellow-500/25 transition-all duration-200 flex items-center gap-2"
               >
                 <Save className="w-4 h-4" />
                 Update Task
@@ -867,21 +867,23 @@ export default function TaskManagement() {
 
       {/* View Task Modal */}
       {isViewModalOpen && selectedTask && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm">
-          <div className="bg-gray-800 rounded-2xl border border-gray-700 p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+          <div className="bg-white rounded-2xl border border-gray-200 shadow-xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-3">
-                <div className="p-2 rounded-lg bg-blue-500/20">
-                  <Eye className="w-5 h-5 text-blue-400" />
+                <div className="p-2 rounded-lg bg-blue-600">
+                  <Eye className="w-5 h-5 text-white" />
                 </div>
-                <h2 className="text-xl font-bold text-white">Task Details</h2>
+                <h2 className="text-xl font-bold text-gray-900">
+                  Task Details
+                </h2>
               </div>
               <button
                 onClick={() => {
                   setIsViewModalOpen(false);
                   setSelectedTask(null);
                 }}
-                className="p-1.5 rounded-lg hover:bg-gray-700 text-gray-400 transition-colors"
+                className="p-1.5 rounded-lg hover:bg-gray-100 text-gray-400 transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -889,14 +891,16 @@ export default function TaskManagement() {
 
             <div className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="p-4 rounded-xl bg-gray-900/50 border border-gray-700">
-                  <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">
+                <div className="p-4 rounded-xl bg-gray-50 border border-gray-200">
+                  <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">
                     Task Name
                   </p>
-                  <p className="text-white font-medium">{selectedTask.name}</p>
+                  <p className="text-gray-900 font-medium">
+                    {selectedTask.name}
+                  </p>
                 </div>
-                <div className="p-4 rounded-xl bg-gray-900/50 border border-gray-700">
-                  <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">
+                <div className="p-4 rounded-xl bg-gray-50 border border-gray-200">
+                  <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">
                     Status
                   </p>
                   <span
@@ -911,34 +915,34 @@ export default function TaskManagement() {
                 </div>
               </div>
 
-              <div className="p-4 rounded-xl bg-gray-900/50 border border-gray-700">
-                <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">
+              <div className="p-4 rounded-xl bg-gray-50 border border-gray-200">
+                <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">
                   Description
                 </p>
-                <p className="text-white">{selectedTask.description}</p>
+                <p className="text-gray-900">{selectedTask.description}</p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="p-4 rounded-xl bg-gray-900/50 border border-gray-700">
-                  <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">
+                <div className="p-4 rounded-xl bg-gray-50 border border-gray-200">
+                  <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">
                     Assigned To
                   </p>
                   <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
                       <span className="text-sm text-white font-medium">
                         {getUserName(selectedTask.assign_to).charAt(0)}
                       </span>
                     </div>
-                    <span className="text-white">
+                    <span className="text-gray-900">
                       {getUserName(selectedTask.assign_to)}
                     </span>
                   </div>
                 </div>
-                <div className="p-4 rounded-xl bg-gray-900/50 border border-gray-700">
-                  <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">
+                <div className="p-4 rounded-xl bg-gray-50 border border-gray-200">
+                  <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">
                     Created
                   </p>
-                  <p className="text-white">
+                  <p className="text-gray-900">
                     {format(
                       new Date(selectedTask.createdAt),
                       "MMMM d, yyyy 'at' h:mm a",
@@ -948,22 +952,22 @@ export default function TaskManagement() {
               </div>
 
               {selectedTask.comment && (
-                <div className="p-4 rounded-xl bg-gray-900/50 border border-gray-700">
-                  <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">
+                <div className="p-4 rounded-xl bg-gray-50 border border-gray-200">
+                  <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">
                     Comment
                   </p>
-                  <p className="text-white">{selectedTask.comment}</p>
+                  <p className="text-gray-900">{selectedTask.comment}</p>
                 </div>
               )}
             </div>
 
-            <div className="flex items-center justify-end gap-3 mt-6 pt-4 border-t border-gray-700">
+            <div className="flex items-center justify-end gap-3 mt-6 pt-4 border-t border-gray-200">
               <button
                 onClick={() => {
                   setIsViewModalOpen(false);
                   setSelectedTask(null);
                 }}
-                className="px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 text-white transition-colors"
+                className="px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 transition-colors"
               >
                 Close
               </button>
@@ -974,34 +978,34 @@ export default function TaskManagement() {
 
       {/* Delete Confirmation Modal */}
       {isDeleteModalOpen && selectedTask && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm">
-          <div className="bg-gray-800 rounded-2xl border border-gray-700 p-6 w-full max-w-md">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+          <div className="bg-white rounded-2xl border border-gray-200 shadow-xl p-6 w-full max-w-md">
             <div className="flex items-center gap-3 mb-4">
-              <div className="p-2 rounded-lg bg-red-500/20">
-                <AlertCircle className="w-6 h-6 text-red-400" />
+              <div className="p-2 rounded-lg bg-red-100">
+                <AlertCircle className="w-6 h-6 text-red-600" />
               </div>
-              <h2 className="text-xl font-bold text-white">Delete Task</h2>
+              <h2 className="text-xl font-bold text-gray-900">Delete Task</h2>
             </div>
 
-            <p className="text-gray-300 mb-6">
+            <p className="text-gray-600 mb-6">
               Are you sure you want to delete the task{" "}
-              <strong className="text-white">"{selectedTask.name}"</strong>?
+              <strong className="text-gray-900">"{selectedTask.name}"</strong>?
               This action cannot be undone.
             </p>
 
-            <div className="flex items-center justify-end gap-3 pt-4 border-t border-gray-700">
+            <div className="flex items-center justify-end gap-3 pt-4 border-t border-gray-200">
               <button
                 onClick={() => {
                   setIsDeleteModalOpen(false);
                   setSelectedTask(null);
                 }}
-                className="px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 text-white transition-colors"
+                className="px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 transition-colors"
               >
                 Cancel
               </button>
               <button
                 onClick={deleteTask}
-                className="px-4 py-2 rounded-lg bg-red-500 hover:bg-red-600 text-white transition-colors flex items-center gap-2"
+                className="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white transition-colors flex items-center gap-2"
               >
                 <Trash2 className="w-4 h-4" />
                 Delete Task

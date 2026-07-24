@@ -268,17 +268,6 @@ export default function AdminLogin() {
             </div>
           </div>
 
-          {/* Forgot Password Link */}
-          <div className="text-right">
-            <button
-              type="button"
-              onClick={() => navigate("/forgot-password")}
-              className="text-sm text-cyan-400 hover:text-cyan-300 transition-colors hover:underline"
-              disabled={loading || success}
-            >
-              Forgot Password?
-            </button>
-          </div>
 
           {/* Login Button */}
           <button
